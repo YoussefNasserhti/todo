@@ -1,0 +1,15 @@
+{
+  "edit": "Edit",
+  "delete": "Delete",
+  "add_task": "Add Task",
+  "title": "Title",
+  "description": "Description",
+
+  "select_date": "Select Date",
+  "select_time": "Select Time",
+  "language": "Language",
+  "mode": "Mode",
+  "Tasks": "Tasks"
+}
+
+
