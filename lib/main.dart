@@ -8,7 +8,7 @@ import 'package:todo_4pm/modules/auth/pages/login_screen.dart';
 import 'package:todo_4pm/modules/auth/pages/sign_up_screen.dart';
 import 'package:todo_4pm/modules/layout/layout.dart';
 import 'package:todo_4pm/modules/splash/splash_screen.dart';
-import 'package:easy_localization/easy_localization.dart';  // إضافة EasyLocalization
+import 'package:easy_localization/easy_localization.dart';
 
 import 'firebase_options.dart';
 import 'modules/layout/manager/main_provider.dart';
@@ -19,13 +19,12 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  await EasyLocalization.ensureInitialized();  // تأكد من تهيئة EasyLocalization
-
+  await EasyLocalization.ensureInitialized();
   runApp(
     EasyLocalization(
-      supportedLocales: [Locale('en'), Locale('ar')],  // اللغات المدعومة
-      path: 'assets/translations',  // مسار ملفات الترجمة
-      fallbackLocale: Locale('en', 'US'),  // اللغة الافتراضية في حال عدم العثور على الترجمة
+      supportedLocales: [Locale('en'), Locale('ar')],
+      path: 'assets/translations',
+      fallbackLocale: Locale('en', 'US'),
       child: const MyApp(),
     ),
   );
@@ -41,9 +40,9 @@ class MyApp extends StatelessWidget {
       child: Consumer<MainProvider>(
         builder: (context, provider, child) {
           return MaterialApp(
-            locale: context.locale,  // ضبط اللغة
-            supportedLocales: context.supportedLocales,  // اللغات المدعومة
-            localizationsDelegates: context.localizationDelegates,  // إعدادات الترجمة
+            locale: context.locale,
+            supportedLocales: context.supportedLocales,
+            localizationsDelegates: context.localizationDelegates,
             themeMode: provider.themeMode,
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,

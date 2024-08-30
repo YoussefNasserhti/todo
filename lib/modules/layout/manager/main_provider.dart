@@ -20,9 +20,8 @@ class MainProvider extends ChangeNotifier {
   TextEditingController titleController = TextEditingController();
   TextEditingController descController = TextEditingController();
 
-  // متغيرات جديدة للغة والثيم
-  String language = 'English'; // اللغة الافتراضية
-  ThemeMode themeMode = ThemeMode.light; // الثيم الافتراضي
+  String language = 'English';
+  ThemeMode themeMode = ThemeMode.light;
 
   void setIndex(int index) {
     selectedIndex = index;
