@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:easy_localization/easy_localization.dart';
+
 class EditTaskContainer extends StatelessWidget {
   final TextEditingController titleController;
   final TextEditingController detailsController;
@@ -26,12 +27,20 @@ class EditTaskContainer extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.2),
+            spreadRadius: 2,
+            blurRadius: 8,
+            offset: const Offset(0, 4), // changes position of shadow
+          ),
+        ],
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-           Text(
-            'edit task'. tr(),
+          Text(
+            'edit_task'.tr(), // Updated translation key
             style: TextStyle(
               fontSize: 24, // Slightly smaller font size
               fontWeight: FontWeight.bold, // Bolder text
@@ -44,8 +53,8 @@ class EditTaskContainer extends StatelessWidget {
               fontSize: 18, // Smaller text for input fields
               fontWeight: FontWeight.bold, // Bolder text for input fields
             ),
-            decoration:  InputDecoration(
-              labelText: 'title'. tr(),
+            decoration: InputDecoration(
+              labelText: 'title'.tr(), // Updated translation key
               border: UnderlineInputBorder(),
             ),
           ),
@@ -56,8 +65,8 @@ class EditTaskContainer extends StatelessWidget {
               fontSize: 16, // Smaller text for input fields
               fontWeight: FontWeight.w500, // Bolder text for input fields
             ),
-            decoration:  InputDecoration(
-              labelText: 'task details'. tr(),
+            decoration: InputDecoration(
+              labelText: 'task_details'.tr(), // Updated translation key
               border: UnderlineInputBorder(),
             ),
           ),
@@ -71,17 +80,18 @@ class EditTaskContainer extends StatelessWidget {
                 lastDate: DateTime(2100),
               );
               if (pickedDate != null) {
-                // Trigger a callback or update state
+                // Update the timeController or trigger a callback
+                timeController.text = DateFormat('dd-MM-yyyy').format(pickedDate);
               }
             },
             child: AbsorbPointer(
               child: TextField(
                 controller: timeController,
                 decoration: InputDecoration(
-                  labelText: 'select date'. tr(),
+                  labelText: 'select_date'.tr(), // Updated translation key
                   hintText: selectedDate != null
                       ? DateFormat('dd-MM-yyyy').format(selectedDate!)
-                      : 'select date',
+                      : 'select_date'.tr(), // Updated translation key
                   hintStyle: const TextStyle(color: Colors.grey),
                   border: const UnderlineInputBorder(),
                 ),
@@ -99,8 +109,8 @@ class EditTaskContainer extends StatelessWidget {
               minimumSize: const Size(180, 40), // Fixed button size (width and height)
             ),
             onPressed: onSave,
-            child:  Text(
-              'save changes'. tr(),
+            child: Text(
+              'save_changes'.tr(), // Updated translation key
               style: TextStyle(
                 fontSize: 18, // Slightly smaller font size
                 fontWeight: FontWeight.bold, // Bolder text

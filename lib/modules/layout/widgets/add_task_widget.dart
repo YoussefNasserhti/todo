@@ -15,11 +15,10 @@ class AddTaskWidget extends StatelessWidget {
         return Container(
           padding: const EdgeInsets.all(10),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start, // Align items to the start
             children: [
-              Text("add_task").tr(), // Translate "Add Task"
-              const SizedBox(
-                height: 10,
-              ),
+              Text("add_task".tr(), style: Theme.of(context).textTheme.headline6), // Translate "Add Task"
+              const SizedBox(height: 10),
               TextField(
                 controller: provider.titleController,
                 decoration: InputDecoration(
@@ -34,9 +33,7 @@ class AddTaskWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 10,
-              ),
+              const SizedBox(height: 10),
               TextField(
                 controller: provider.descController,
                 decoration: InputDecoration(
@@ -51,13 +48,9 @@ class AddTaskWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text("select_date").tr(), // Translate "Select Date"
-              const SizedBox(
-                height: 10,
-              ),
+              const SizedBox(height: 10),
+              Text("select_date".tr(), style: Theme.of(context).textTheme.subtitle1), // Translate "Select Date"
+              const SizedBox(height: 10),
               GestureDetector(
                 onTap: () {
                   showDatePicker(
@@ -66,31 +59,33 @@ class AddTaskWidget extends StatelessWidget {
                     initialDate: provider.selectedTimeTask,
                     lastDate: DateTime.now().add(const Duration(days: 365)),
                   ).then((value) {
-                    provider.setTimeTask(value!);
+                    if (value != null) {
+                      provider.setTimeTask(value);
+                    }
                   });
                 },
                 child: Text(
-                  provider.selectedTimeTask.toString().substring(0, 10),
+                  "${provider.selectedTimeTask.toLocal()}".split(' ')[0], // Format date
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
               ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text("select_time").tr(), // Translate "Select Time"
-              const SizedBox(
-                height: 10,
-              ),
+              const SizedBox(height: 10),
+              Text("select_time".tr(), style: Theme.of(context).textTheme.subtitle1), // Translate "Select Time"
+              const SizedBox(height: 10),
               GestureDetector(
                 onTap: () {
                   showTimePicker(
                     context: context,
                     initialTime: provider.timeOfDay,
                   ).then((value) {
-                    provider.setTime(value!);
+                    if (value != null) {
+                      provider.setTime(value);
+                    }
                   });
                 },
                 child: Text(
-                  "${provider.timeOfDay.hour} : ${provider.timeOfDay.minute}",
+                  "${provider.timeOfDay.format(context)}", // Format time
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
               ),
               const Spacer(),
@@ -100,7 +95,7 @@ class AddTaskWidget extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 child: Text("add_task_button".tr()), // Translate "Add Task"
-              )
+              ),
             ],
           ),
         );

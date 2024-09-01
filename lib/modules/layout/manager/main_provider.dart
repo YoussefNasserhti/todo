@@ -14,7 +14,8 @@ class MainProvider extends ChangeNotifier {
   DateTime selectedTimeTask = DateTime.now();
   TimeOfDay timeOfDay = TimeOfDay.now();
   List<Widget> screens = [TaskScreen(), SettingsScreen()];
-  List<String> title = ["Tasks".tr(), "Settings".tr()]; // ترجمة العناوين
+  List<String> title = [tr("Tasks"), tr("Settings")]; // ترجمة العناوين
+
   UserModel? user;
 
   TextEditingController titleController = TextEditingController();
@@ -107,12 +108,14 @@ class MainProvider extends ChangeNotifier {
 
   // طرق لضبط اللغة والثيم
   void setLanguage(BuildContext context, String newLanguage) {
+    print('Changing language to: $newLanguage');
     language = newLanguage;
     context.setLocale(Locale(newLanguage)); // تحديث اللغة باستخدام EasyLocalization
     notifyListeners();
   }
 
   void setThemeMode(ThemeMode newMode) {
+    print('Changing theme mode to: $newMode');
     themeMode = newMode;
     notifyListeners();
   }

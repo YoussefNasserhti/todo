@@ -45,7 +45,7 @@ class _TaskEditScreenState extends State<TaskEditScreen> {
     widget.task.desc = _detailsController.text;
     widget.task.date = _selectedDate?.millisecondsSinceEpoch ?? 0;
 
-    // Navigate back to the task screen with the updated task
+    // Navigate back to the previous screen with the updated task
     Navigator.pop(context, widget.task);
   }
 
@@ -60,7 +60,7 @@ class _TaskEditScreenState extends State<TaskEditScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('edit task').tr(),
+        title: Text('edit_task').tr(), // Ensure the translation key is present
         actions: [
           IconButton(
             icon: Icon(Icons.save),

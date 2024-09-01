@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:todo_4pm/core/models/task_model.dart';
 import 'package:todo_4pm/modules/layout/manager/main_provider.dart';
 import 'package:todo_4pm/modules/layout/widgets/task_widget.dart';
+import "package:easy_localization/easy_localization.dart";
 
 class TaskScreen extends StatelessWidget {
   const TaskScreen({super.key});

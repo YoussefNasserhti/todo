@@ -36,7 +36,7 @@ class TaskWidget extends StatelessWidget {
                   backgroundColor: const Color(0xFFFE4A49),
                   foregroundColor: Colors.white,
                   icon: Icons.delete,
-                  label: 'delete'.tr(),
+                  label: 'delete'.tr(), // Ensure the translation key exists
                 ),
                 SlidableAction(
                   borderRadius: BorderRadius.circular(10),
@@ -51,7 +51,7 @@ class TaskWidget extends StatelessWidget {
                   backgroundColor: const Color(0xFF21B7CA),
                   foregroundColor: Colors.white,
                   icon: Icons.edit,
-                  label: 'edit',
+                  label: 'edit'.tr(), // Ensure the translation key exists
                 ),
               ],
             ),
@@ -61,6 +61,14 @@ class TaskWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(15),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                    offset: Offset(0, 3), // Shadow position
+                  ),
+                ],
               ),
               child: Row(
                 children: [
@@ -73,29 +81,42 @@ class TaskWidget extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 15),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        task.title,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25,
-                          color: task.isDone ? Colors.green : Colors.blue,
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          task.title,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18, // Adjust font size
+                            color: task.isDone ? Colors.green : Colors.blue,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 10),
-                      Text(task.desc),
-                      const Spacer(),
-                      Row(
-                        children: [
-                          const Icon(Icons.timelapse),
-                          Text(task.time),
-                        ],
-                      ),
-                    ],
+                        const SizedBox(height: 10),
+                        Text(
+                          task.desc,
+                          style: TextStyle(
+                            color: Colors.grey[700], // Slightly darker text color
+                          ),
+                        ),
+                        const Spacer(),
+                        Row(
+                          children: [
+                            const Icon(Icons.timelapse, color: Colors.grey),
+                            const SizedBox(width: 5),
+                            Text(
+                              task.time,
+                              style: TextStyle(
+                                color: Colors.grey[700],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                  const Spacer(),
+                  const SizedBox(width: 10),
                   task.isDone
                       ? InkWell(
                     onTap: () {
@@ -105,7 +126,7 @@ class TaskWidget extends StatelessWidget {
                       "Done..!",
                       style: TextStyle(
                         color: Colors.green,
-                        fontSize: 25,
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

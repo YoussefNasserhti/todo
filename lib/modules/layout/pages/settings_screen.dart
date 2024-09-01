@@ -15,15 +15,15 @@ class SettingsScreen extends StatelessWidget {
                     body: Column(
                         children: [
                             Container(
-                                height: 160, // Larger AppBar height
+                                height: 160,
                                 color: Colors.blue,
                                 padding: const EdgeInsets.only(left: 20, right: 20, top: 50),
                                 alignment: Alignment.centerLeft,
                                 child: Text(
                                     'settings'.tr(),
                                     style: GoogleFonts.poppins(
-                                        fontSize: 28, // Larger font size
-                                        fontWeight: FontWeight.bold, // Bold text
+                                        fontSize: 28,
+                                        fontWeight: FontWeight.bold,
                                         color: Colors.white,
                                     ),
                                 ),
@@ -31,7 +31,7 @@ class SettingsScreen extends StatelessWidget {
                             Expanded(
                                 child: Container(
                                     padding: const EdgeInsets.all(20),
-                                    color: const Color(0xFFD7E7C9), // Background color as shown in the image
+                                    color: const Color(0xFFD7E7C9),
                                     child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
@@ -57,14 +57,14 @@ class SettingsScreen extends StatelessWidget {
                                                 }).toList(),
                                                 onChanged: (newValue) {
                                                     if (newValue != null) {
-                                                        provider.setLanguage(context, newValue); // Update language using MainProvider
+                                                        provider.setLanguage(context, newValue);
                                                     }
                                                 },
                                                 decoration: InputDecoration(
                                                     filled: true,
                                                     fillColor: Colors.white,
                                                     contentPadding: const EdgeInsets.symmetric(
-                                                        vertical: 14, // Adjusted to enlarge the container
+                                                        vertical: 14,
                                                         horizontal: 15,
                                                     ),
                                                     enabledBorder: OutlineInputBorder(
@@ -102,14 +102,14 @@ class SettingsScreen extends StatelessWidget {
                                                     if (newValue != null) {
                                                         provider.setThemeMode(
                                                             newValue == 'Dark' ? ThemeMode.dark : ThemeMode.light
-                                                        ); // Update theme mode using MainProvider
+                                                        );
                                                     }
                                                 },
                                                 decoration: InputDecoration(
                                                     filled: true,
                                                     fillColor: Colors.white,
                                                     contentPadding: const EdgeInsets.symmetric(
-                                                        vertical: 14, // Adjusted to enlarge the container
+                                                        vertical: 14,
                                                         horizontal: 15,
                                                     ),
                                                     enabledBorder: OutlineInputBorder(

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:todo_4pm/modules/layout/widgets/edit_task_container.dart'; // تأكد من استيراد ملف `EditTaskContainer`
-import 'package:todo_4pm/core/models/task_model.dart'; // تأكد من استيراد ملف `TaskModel`
+import 'package:todo_4pm/core/models/task_model.dart';
+import 'package:easy_localization/easy_localization.dart';// تأكد من استيراد ملف `TaskModel`
 
 class TaskEditScreen extends StatefulWidget {
   final TaskModel task; // تأكد من أن النوع هو TaskModel
